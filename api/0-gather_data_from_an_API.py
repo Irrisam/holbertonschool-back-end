@@ -27,8 +27,9 @@ if len(sys.argv) > 1:
                 uncompleted.append(task)
         todos_total = (len(completed) + len(uncompleted))
 
-    print(
-        f"Employee {name} is done withtasks({len(completed)}/{todos_total}):")
+    output = "Employee {} is done with tasks({}/{}):".format(
+        name, len(completed), todos_total)
+    print(output)
     for task_name in completed:
         print(f"\t {task_name['title']}")
 else:
