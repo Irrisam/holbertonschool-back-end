@@ -36,7 +36,9 @@ if len(sys.argv) > 1:
 
     csv_list = []
     for task in todos_response:
-        csv_list.append([user_id, name, task["completed"], task["title"]])
+        task_title = str(task["completed"])
+        csv_list.append([user_id, name, task_title, task["title"]])
+
     file_name = "USER_ID.csv"
 
     with open(file_name, mode="w", newline='') as file:
