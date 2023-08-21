@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """program that copeis all tasks in a json file"""
+
 import json
 import requests
 import sys
@@ -34,3 +35,4 @@ if len(sys.argv) > 1:
 
     with open(json_filename, "w") as json_file:
         json.dump(user_data, json_file)
+    json_file.close
