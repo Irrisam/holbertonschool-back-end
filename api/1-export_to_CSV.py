@@ -15,7 +15,7 @@ if len(sys.argv) > 1:
 
     if name_request.status_code == 200:
         name_response = name_request.json()
-        name = name_response["name"]
+        name = name_response["username"]
 
     if todos_request.status_code == 200:
         todos_response = todos_request.json()
