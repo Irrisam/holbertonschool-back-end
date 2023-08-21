@@ -14,6 +14,7 @@ user_tasks = {}
 
 for user in users_data:
     user_id = user["id"]
+    username = user["username"]
 
     todos_request = requests.get(f"{base_url}/todos?userId={user_id}")
     if todos_request.status_code == 200:
@@ -25,6 +26,7 @@ for user in users_data:
         task_data = {
             "task": task["title"],
             "completed": task["completed"],
+            "username": username,
         }
         tasks.append(task_data)
 
