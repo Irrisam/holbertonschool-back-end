@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""program that copeis all tasks in a json file"""
+
 import json
 import requests
 import sys
