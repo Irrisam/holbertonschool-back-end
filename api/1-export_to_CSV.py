@@ -30,10 +30,6 @@ if len(sys.argv) > 1:
 
     output = "Employee {} is done with tasks({}/{}):".format(
         name, len(completed), todos_total)
-    print(output)
-    for task_name in completed:
-        print(f"\t {task_name['title']}")
-
     csv_list = []
     for task in todos_response:
         task_title = str(task["completed"])
