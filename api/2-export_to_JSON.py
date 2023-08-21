@@ -1,37 +1,36 @@
 #!/usr/bin/python3
-"""program that copeis all tasks in a json file"""
-
+"""Script to export user tasks to JSON file"""
+from api_request import api_request
 import json
-import requests
 import sys
 
-if len(sys.argv) > 1:
-    user_id = sys.argv[1]
 
-    url_name = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    url_todos = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
-    name_request = requests.get(url_name)
-    todos_request = requests.get(url_todos)
+if __name__ == '__main__':
+    """script to get all done task of the user"""
+    if len(sys.argv) > 1:
+        id = sys.argv[1]
 
-    if name_request.status_code == 200:
-        name_response = name_request.json()
-        username = name_response["username"]
+        # User Recovery
+        user = api_request(f"users/{id}")
+        if len(user) > 0:
 
-    if todos_request.status_code == 200:
-        todos_response = todos_request.json()
-        user_data = {}
-        for task in todos_response:
-            task_data = {
-                "task": task["title"],
-                "completed": task["completed"],
-                "username": username
-            }
-            if user_id in user_data:
-                user_data[user_id].append(task_data)
-            else:
-                user_data[user_id] = [task_data]
-    json_data = json.dumps(user_data)
-    json_filename = f"{user_id}.json"
+            # User task retrievals
+            todos = api_request(f"todos", {"userId": id})
+            if len(todos) > 0:
 
-    with open(json_filename, "w") as json_file:
-        json.dump(user_data, json_file)
+                # Create from requested userId: []
+                callback = {}
+                callback[id] = []
+
+                # We browse data by data to add in the table
+                for todo in todos:
+                    callback[id].append({
+                        "task": todo['title'],
+                        "completed": todo['completed'],
+                        "username": user['username']
+                    })
+
+                # Sending data to a .json file
+                with open("{}.json".format(id), 'w') as csvfile:
+                    csvfile.write(json.dumps(callback))
+                    csvfile.close()
