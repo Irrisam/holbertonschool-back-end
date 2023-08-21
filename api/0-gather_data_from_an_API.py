@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """program that uses a fake api to retreive data."""
 
-import sys
 import requests
+import sys
 
 if len(sys.argv) > 1:
     user_id = sys.argv[1]
@@ -27,7 +27,7 @@ if len(sys.argv) > 1:
                 uncompleted.append(task)
         todos_total = (len(completed) + len(uncompleted))
 
-    print(f"Employee {name} is done with tasks{len(completed)}/{todos_total}:")
+    print(f"Employee {name} is done with tasks({len(completed)}/{todos_total}):")
     for task_name in completed:
         print(f"\t {task_name['title']}")
 else:
