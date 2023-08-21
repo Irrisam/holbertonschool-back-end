@@ -40,7 +40,7 @@ if len(sys.argv) > 1:
     file_name = "USER_ID.csv"
 
     with open(file_name, mode="w", newline='') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quoting=csv.QUOTE_NONNUMERIC)
 
         writer.writerows(csv_list)
 
