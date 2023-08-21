@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""program that uses a fake api to retreive data."""
 
 import sys
 import requests
