@@ -35,7 +35,7 @@ if len(sys.argv) > 1:
         task_title = str(task["completed"])
         csv_list.append([user_id, name, task_title, task["title"]])
 
-    file_name = "USER_ID.csv"
+    file_name = f"{user_id}.csv"
 
     with open(file_name, mode="w", newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_NONNUMERIC)
