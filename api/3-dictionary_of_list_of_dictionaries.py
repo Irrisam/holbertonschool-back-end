@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""program that stores all values of all employees in a json file"""
 import json
 import requests
 
